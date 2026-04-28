@@ -1,0 +1,43 @@
+title: "雪忆的博客"
+description: "记录技术、思考与生活"
+author:
+  name: "zhxuyi"
+  email: ""
+  bio: "热爱技术，喜欢分享。"
+
+url: "https://zhxuyi.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

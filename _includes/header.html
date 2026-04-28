@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <p class="site-tagline">{{ site.description }}</p>
+      <nav class="site-nav">
+        <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">首页</a>
+        <a class="nav-link {% if page.url == '/about/' %}active{% endif %}" href="{{ '/about/' | relative_url }}">关于</a>
+      </nav>
+    </div>
+  </div>
+</header>

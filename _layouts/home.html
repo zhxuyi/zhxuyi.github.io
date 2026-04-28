@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<div class="home">
+  {% if page.title %}
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% endif %}
+
+  <div class="post-list">
+    {% for post in paginator.posts %}
+    <article class="post-preview">
+      <header class="post-preview-header">
+        <h2 class="post-preview-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+        <div class="post-meta">
+          <span class="post-date">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            {{ post.date | date: "%Y年%m月%d日" }}
+          </span>
+          {% if post.categories.size > 0 %}
+          <span class="post-categories">
+            {% for category in post.categories %}
+              <span class="category-tag">{{ category }}</span>
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+      </header>
+      {% if post.excerpt %}
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+      {% endif %}
+      <a class="read-more" href="{{ post.url | relative_url }}">阅读全文 →</a>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if paginator.total_pages > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous_page %}
+      <a class="pagination-btn" href="{{ paginator.previous_page_path | relative_url }}">← 较新文章</a>
+    {% else %}
+      <span class="pagination-btn disabled">← 较新文章</span>
+    {% endif %}
+
+    <span class="pagination-info">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+
+    {% if paginator.next_page %}
+      <a class="pagination-btn" href="{{ paginator.next_page_path | relative_url }}">较旧文章 →</a>
+    {% else %}
+      <span class="pagination-btn disabled">较旧文章 →</span>
+    {% endif %}
+  </nav>
+  {% endif %}
+</div>
